@@ -80,13 +80,14 @@ function buildEmbed(servers, prevData = {}) {
   }
 
   // Формируем строку для каждого сервера
-  const lines = servers.map(server => {
-    const icon     = getServerIcon(server.name);
-    const prevCount = prevData[server.name] ?? null;
-    const diff     = formatDiff(server.players, prevCount);
+    const lines = servers.map((server, index) => {
+        const icon = getServerIcon(server.name);
+        const prevCount = prevData[server.name] ?? null;
+        const diff = formatDiff(server.players, prevCount);
+        const queue = server.queue > 0 ? ` | 🕐 Очередь: **${server.queue}**` : '';
 
-    return `${icon} **${server.name}**\n• Игроков: **${server.players.toLocaleString('ru-RU')}**${diff}`;
-  });
+        return `**${index + 1}.** ${icon} **${server.name}**\n• Игроков: **${server.players.toLocaleString('ru-RU')}**${diff}${queue}`;
+    });
 
   // Разбиваем на поля по 5 серверов (ограничение Embed)
   const SERVERS_PER_FIELD = 5;
