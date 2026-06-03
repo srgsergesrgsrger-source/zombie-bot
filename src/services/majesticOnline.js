@@ -80,13 +80,29 @@ function buildEmbed(servers, prevData = {}) {
   }
 
   // Формируем строку для каждого сервера
-    const lines = servers.map((server, index) => {
+    const SERVER_ORDER = [
+        'New York', 'Detroit', 'Chicago', 'San Francisco', 'Atlanta',
+        'San Diego', 'Los Angeles', 'Miami', 'Las Vegas', 'Washington',
+        'Dallas', 'Boston', 'Houston', 'Seattle', 'Phoenix',
+        'Denver', 'Portland', 'Orlando'
+    ];
+
+    const sortedServers = [...servers].sort((a, b) => {
+        const ai = SERVER_ORDER.indexOf(a.name);
+        const bi = SERVER_ORDER.indexOf(b.name);
+        if (ai === -1) return 1;
+        if (bi === -1) return -1;
+        return ai - bi;
+    });
+
+    const lines = sortedServers.map((server, index) => {
+        const num = String(SERVER_ORDER.indexOf(server.name) + 1).padStart(2, '0');
         const icon = getServerIcon(server.name);
         const prevCount = prevData[server.name] ?? null;
         const diff = formatDiff(server.players, prevCount);
         const queue = server.queue > 0 ? ` | 🕐 Очередь: **${server.queue}**` : '';
 
-        return `**${index + 1}.** ${icon} **${server.name}**\n• Игроков: **${server.players.toLocaleString('ru-RU')}**${diff}${queue}`;
+        return `**${num}.** ${icon} **${server.name}**\n• Игроков: **${server.players.toLocaleString('ru-RU')}**${diff}${queue}`;
     });
 
   // Разбиваем на поля по 5 серверов (ограничение Embed)
