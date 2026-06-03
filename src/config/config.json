@@ -1,0 +1,28 @@
+{
+  "statsChannel": {
+    "name": "📊 All Members: {count}",
+    "updateIntervalMs": 300000,
+    "categoryName": "📊 SERVER STATS 📊",
+    "channelId": null
+  },
+  "majesticOnline": {
+    "url": "https://wiki.majestic-rp.ru/ru/servers",
+    "updateIntervalMs": 60000,
+    "channelId": null,
+    "messageId": null,
+    "retryDelayMs": 5000,
+    "maxRetries": 3
+  },
+  "serverIcons": {
+    "New York":      "🗽",
+    "Detroit":       "🏭",
+    "Chicago":       "🏙",
+    "San Francisco": "🌉",
+    "Atlanta":       "🏛",
+    "San Diego":     "🌴",
+    "Los Angeles":   "🎡",
+    "Miami":         "🌴",
+    "Las Vegas":     "🎰",
+    "Washington":    "🦅"
+  }
+}
