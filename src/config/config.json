@@ -1,8 +1,8 @@
 {
   "statsChannel": {
-    "name": "📊 All Members: {count}",
+    "name": "👥 Members: {count}",
     "updateIntervalMs": 300000,
-    "categoryName": "📊 SERVER STATS 📊",
+    "categoryName": "discord.gg/zombiemods",
     "channelId": null
   },
   "majesticOnline": {
